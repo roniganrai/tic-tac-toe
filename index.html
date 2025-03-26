@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 " />
     <title>TIC-TAC-TOE GAME</title>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="mode-selection">
-        <h2>Choose Game Mode</h2>
-        <button id="play-friends">Play with Friends</button>
-        <button id="play-computer">Play with Computer</button>
+      <h2>Choose Game Mode</h2>
+      <button id="play-friends">Play with Friends</button>
+      <button id="play-computer">Play with Computer</button>
     </div>
 
     <div class="name-container hide">
-        <h2>Enter Player 2 Name:</h2>
-        <input type="text" id="player2-name" placeholder="Enter your name">
-        <button id="start-game-btn">Start Game</button>
+      <h2>Enter Player 2 Name:</h2>
+      <input type="text" id="player2-name" placeholder="Enter your name" />
+      <button id="start-game-btn">Start Game</button>
     </div>
 
-    <main class="hide">
-        <div class="msg-container hide">
-            <p id="msg">Winner</p>
-            <button id="new-btn">New Game</button>
+    <div class="hide size">
+      <div class="msg-container hide">
+        <p id="msg">Winner</p>
+        <button id="new-btn">New Game</button>
+      </div>
+
+      <h1>TIC TAC TOE</h1>
+      <h2 id="turn-indicator">Player O's Turn</h2>
+
+      <div class="scoreboard">
+        <p id="player1-score">Roni: 0</p>
+        <p id="player2-score">Player 2: 0</p>
+      </div>
+
+      <div class="container">
+        <div class="game-board">
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
+          <button class="box"></button>
         </div>
-        
-        <h1>TIC TAC TOE</h1>
-        <h2 id="turn-indicator">Player O's Turn</h2>
-        <div class="container">
-            <div class="game-board">
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-            </div>
-        </div>
-        <button id="reset">Reset Game</button>
-    </main>
+      </div>
+      <button id="reset">Reset Game</button>
+    </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
