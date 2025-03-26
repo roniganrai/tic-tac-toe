@@ -3,8 +3,10 @@ let resetbtn = document.querySelector("#reset");
 let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.getElementById("msg");
+let turnIndicator = document.getElementById("turn-indicator");
 
 let turn0 = true;
+let gameOver = false;
 
 const winPattern = [
     [0,1,2],
@@ -17,15 +19,34 @@ const winPattern = [
     [6,7,8]
 ];
 
+const updateTurnIndicator = () => {
+    if (gameOver) return;  
+
+    if (turn0) {
+        turnIndicator.innerText = "Player O's Turn";
+        turnIndicator.style.color = "white";
+    } else {
+        turnIndicator.innerText = "Player X's Turn";
+        turnIndicator.style.color = "lightblue";
+    }
+
+    turnIndicator.classList.add("turn-animation");
+    setTimeout(() => {
+        turnIndicator.classList.remove("turn-animation");
+    }, 300);
+};
+
 const resetGame = () => {
     turn0 = true;
+    gameOver = false;
     enableBoxes();
     msgContainer.classList.add("hide");
+    updateTurnIndicator();
 };
 
 boxes.forEach((box) => {
     box.addEventListener("click", () => {
-        console.log("box was clicked");
+        if (gameOver) return;
         if(turn0){
             box.innerText="O";
             turn0=false;
@@ -35,7 +56,7 @@ boxes.forEach((box) => {
             turn0=true;
         }
         box.disabled = true;
-
+        updateTurnIndicator();
         checkWinner();
     });
 });
@@ -59,6 +80,7 @@ const showWinner = (winner) => {
     disableBoxes();
 };
 
+
 const checkWinner = () =>{
     for(let pattern of winPattern){
         let pos1val = boxes[pattern[0]].innerText;
@@ -67,10 +89,14 @@ const checkWinner = () =>{
 
         if(pos1val && pos2val  && pos3val){
             if(pos1val=== pos2val && pos2val === pos3val){
-                console.log("Winner",pos1val);
                 showWinner(pos1val);
+                return;
             }
         }
+    }
+    if ([...boxes].every(box => box.innerText !== "")) {
+        msg.innerText = "It's a Draw!";
+        msgContainer.classList.remove("hide");
     }
 };
 
