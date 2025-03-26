@@ -4,6 +4,106 @@
     box-sizing: border-box;
 }
 
+.mode-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    text-align: center;
+}
+
+.mode-selection h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.mode-selection button {
+    width: 250px;
+    padding: 15px;
+    margin: 10px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+    font-weight: bold;
+}
+
+#play-friends {
+    background: #ff7eb3;
+}
+
+#play-computer {
+    background: #50c878;
+}
+
+.mode-selection button:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+.name-container h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#player2-name {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #00bcd4;
+    border-radius: 5px;
+    outline: none;
+    background: #222;
+    color: white;
+    text-align: center;
+}
+
+#player2-name::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#start-game-btn {
+    margin-top: 15px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: #00bcd4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#start-game-btn:hover {
+    background: #0097a7;
+    transform: scale(1.05);
+}
+
+
 body{
     background-color: #548687;
     text-align: center;
@@ -18,33 +118,55 @@ body{
     align-items: center;
 }
 
-.game{
-    height: 60vmin;
-    width: 60vmin;
-    display: flex;
-    flex-wrap: wrap;
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 10px;
     justify-content: center;
     align-items: center;
-    gap: 1.5vmin;
+    margin-top: 50px;
 }
 
-.box{
-    height: 18vmin;
-    width: 18vmin;
-    border-radius: 1rem;
-    border: none;
-    box-shadow: 0 0 1rem rgba(0,0,0,3);
-    font-size: 8vmin;
+.box {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(145deg, #1e2a38, #283c50); /* Modern dark gradient */
+    border: 2px solid #ffffff80; /* Semi-transparent border */
+    border-radius: 15px; /* Smooth edges */
+    font-size: 3rem;
     font-weight: bold;
-    color: cornflowerblue;
-    background-color: #ffffc7;
+    text-align: center;
+    line-height: 120px;
+    color: white;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3), 
+                -4px -4px 10px rgba(255, 255, 255, 0.2); /* 3D shadow effect */
+    transition: all 0.3s ease-in-out;
+}
+
+.box.show {
+    opacity: 1;
+    transform: scale(1.2);
+    animation: fadeInText 0.4s ease-in-out;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .box:hover{
+    background-color: lightgray;
     transform: scale(1.05);
 }
+
 
 
 #reset{
@@ -107,19 +229,15 @@ body{
     transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-@media (max-width: 600px) {
-    .box {
-        height: 20vmin;
-        width: 20vmin;
-        font-size: 10vmin;
-    }
-
+@media (max-width: 500px) {
     .game {
-        width: 80vmin;
-        height: 80vmin;
+        grid-template-columns: repeat(3, 60px);
     }
-
-    #msg {
-        font-size: 6vmin;
+    .box {
+        width: 60px;
+        height: 60px;
+    }
+    h1 {
+        font-size: 2rem;
     }
 }

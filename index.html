@@ -7,15 +7,28 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="msg-container hide">
-        <p id="msg">Winner</p>
-        <button id="new-btn">New Game</button>
+    <div class="mode-selection">
+        <h2>Choose Game Mode</h2>
+        <button id="play-friends">Play with Friends</button>
+        <button id="play-computer">Play with Computer</button>
     </div>
-    <main>
+
+    <div class="name-container hide">
+        <h2>Enter Player 2 Name:</h2>
+        <input type="text" id="player2-name" placeholder="Enter your name">
+        <button id="start-game-btn">Start Game</button>
+    </div>
+
+    <main class="hide">
+        <div class="msg-container hide">
+            <p id="msg">Winner</p>
+            <button id="new-btn">New Game</button>
+        </div>
+        
         <h1>TIC TAC TOE</h1>
         <h2 id="turn-indicator">Player O's Turn</h2>
         <div class="container">
-            <div class="game">
+            <div class="game-board">
                 <button class="box"></button>
                 <button class="box"></button>
                 <button class="box"></button>
