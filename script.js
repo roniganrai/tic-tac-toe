@@ -1,3 +1,11 @@
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("service-worker.js")
+      .then(() => console.log("Service Worker Registered"));
+  });
+}
+
 let boxes = document.querySelectorAll(".box");
 let resetbtn = document.querySelector("#reset");
 let newGameBtn = document.querySelector("#new-btn");
